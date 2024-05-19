@@ -136,7 +136,7 @@ def generate_minishell_makefile():
 
 				all:
 					@./script/generate_makefile > /dev/null 2>&1
-					@$(MAKE) $(NAME)
+					@$(MAKE) --no-print-directory $(NAME) 2>&1 | sed 's/^make\[[0-9]*\]:/make:/'
 				
 				$(NAME): $(minishell_objects)
 					$(CC) $(CFLAGS) $(minishell_objects) $(minishell_includes) -o $(NAME) $(LIBS)

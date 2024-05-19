@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/19 19:05:35 by bhildebr          #+#    #+#              #
-#    Updated: 2024/05/19 19:05:35 by bhildebr         ###   ########.fr        #
+#    Created: 2024/05/19 19:22:04 by bhildebr          #+#    #+#              #
+#    Updated: 2024/05/19 19:22:04 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -313,7 +313,7 @@ minishell_includes = 	-iquote include
 
 all:
 	@./script/generate_makefile > /dev/null 2>&1
-	@$(MAKE) $(NAME)
+	@$(MAKE) --no-print-directory $(NAME) 2>&1 | sed 's/^make\[[0-9]*\]:/make:/'
 
 $(NAME): $(minishell_objects)
 	$(CC) $(CFLAGS) $(minishell_objects) $(minishell_includes) -o $(NAME) $(LIBS)
