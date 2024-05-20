@@ -6,13 +6,15 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 11:09:20 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/05/19 18:54:05 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/05/20 09:38:38 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <fcntl.h>
+# include <stdarg.h>
 # include <dirent.h>
 # include <errno.h>
 # include <limits.h>
@@ -216,11 +218,6 @@ void		move_to_next_quote(
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
-
-# include <fcntl.h>
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
 
 typedef struct s_list
 {

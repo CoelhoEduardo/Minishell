@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:33:13 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/05/18 20:00:11 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/05/20 09:37:05 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,32 @@ int	set_exit_status(int status)
 	return (*exit_status);
 }
 
+void	wait_child_status(pid_t pid, int *status)
+{
+	waitpid(pid, status, 0);
+	if (WIFEXITED(*status))
+		*status = WEXITSTATUS(*status);
+	else if (*status == 1)
+		return ;
+	else if (WIFSIGNALED(*status))
+	{
+		if (*status == SIGINT)
+			write(STDIN_FILENO, "\n", 1);
+		*status = WTERMSIG(*status) + 128;
+	}
+}
+
 void	reset_for_next_iteration(char *line)
 {
 	free(line);
 	// delete_heredoc_files();
 	ft_free_memory();
+}
+
+void	close_pipe(int *pipe_fd)
+{
+	if (pipe_fd[0] != -1)
+		close(pipe_fd[0]);
+	if (pipe_fd[1] != -1)
+		close(pipe_fd[1]);
 }

@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/19 19:22:04 by bhildebr          #+#    #+#              #
-#    Updated: 2024/05/19 19:22:04 by bhildebr         ###   ########.fr        #
+#    Created: 2024/05/20 09:59:11 by bhildebr          #+#    #+#              #
+#    Updated: 2024/05/20 09:59:11 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,9 @@ CFLAGS = -Wall -Wextra -Werror -g -MMD -MP
 LIBS = -lreadline
 
 minishell_sources = 	src/main.c \
+		src/builtin/export.c \
+		src/executor/execute_command.c \
+		src/executor/executor.c \
 		src/lexer/lexer.c \
 		src/lexer/open_syntax.c \
 		src/libft/ft_absolute.c \
@@ -109,11 +112,17 @@ minishell_sources = 	src/main.c \
 		src/libft/ft_toupper.c \
 		src/libft/ft_wordcount.c \
 		src/libft/get_next_line.c \
+		src/parser/parser.c \
+		src/signals/signals.c \
+		src/utils/environ.c \
 		src/utils/error.c \
 		src/utils/helper.c \
 		src/utils/token_list.c
 
 minishell_objects = 	src/main.o \
+		src/builtin/export.o \
+		src/executor/execute_command.o \
+		src/executor/executor.o \
 		src/lexer/lexer.o \
 		src/lexer/open_syntax.o \
 		src/libft/ft_absolute.o \
@@ -206,6 +215,9 @@ minishell_objects = 	src/main.o \
 		src/libft/ft_toupper.o \
 		src/libft/ft_wordcount.o \
 		src/libft/get_next_line.o \
+		src/parser/parser.o \
+		src/signals/signals.o \
+		src/utils/environ.o \
 		src/utils/error.o \
 		src/utils/helper.o \
 		src/utils/token_list.o
@@ -213,6 +225,9 @@ minishell_objects = 	src/main.o \
 minishell_headers = 	include/minishell.h
 
 minishell_depends = 	src/main.d \
+		src/builtin/export.d \
+		src/executor/execute_command.d \
+		src/executor/executor.d \
 		src/lexer/lexer.d \
 		src/lexer/open_syntax.d \
 		src/libft/ft_absolute.d \
@@ -305,6 +320,9 @@ minishell_depends = 	src/main.d \
 		src/libft/ft_toupper.d \
 		src/libft/ft_wordcount.d \
 		src/libft/get_next_line.d \
+		src/parser/parser.d \
+		src/signals/signals.d \
+		src/utils/environ.d \
 		src/utils/error.d \
 		src/utils/helper.d \
 		src/utils/token_list.d
