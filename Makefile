@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/20 09:59:11 by bhildebr          #+#    #+#              #
-#    Updated: 2024/05/20 09:59:11 by bhildebr         ###   ########.fr        #
+#    Created: 2024/05/20 10:54:02 by bhildebr          #+#    #+#              #
+#    Updated: 2024/05/20 10:54:02 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ CFLAGS = -Wall -Wextra -Werror -g -MMD -MP
 LIBS = -lreadline
 
 minishell_sources = 	src/main.c \
+		src/builtin/builtins.c \
 		src/builtin/export.c \
+		src/builtin/export_print.c \
 		src/executor/execute_command.c \
 		src/executor/executor.c \
 		src/lexer/lexer.c \
@@ -120,7 +122,9 @@ minishell_sources = 	src/main.c \
 		src/utils/token_list.c
 
 minishell_objects = 	src/main.o \
+		src/builtin/builtins.o \
 		src/builtin/export.o \
+		src/builtin/export_print.o \
 		src/executor/execute_command.o \
 		src/executor/executor.o \
 		src/lexer/lexer.o \
@@ -225,7 +229,9 @@ minishell_objects = 	src/main.o \
 minishell_headers = 	include/minishell.h
 
 minishell_depends = 	src/main.d \
+		src/builtin/builtins.d \
 		src/builtin/export.d \
+		src/builtin/export_print.d \
 		src/executor/execute_command.d \
 		src/executor/executor.d \
 		src/lexer/lexer.d \
