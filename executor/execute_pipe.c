@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 17:06:38 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 17:10:54 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 17:58:50 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	wait_child_status(pid_t pid, int *status)
 	else if (WIFSIGNALED(*status))
 	{
 		if (*status == SIGINT)
-			writes(STDIN_FILENO, "\n", 1);
+			write(STDIN_FILENO, "\n", 1);
 		*status = WTERMSIG(*status) + 128;
 	}
 }

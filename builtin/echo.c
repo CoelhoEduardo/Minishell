@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 16:30:38 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 16:33:29 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 17:55:32 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	execute_echo(t_token *cmd)
 {
 	char	**args;
 	int		has_n_flag;
-	
+
 	has_n_flag = 0;
 	args = get_cmd_and_args(cmd);
 	args++;

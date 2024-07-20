@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 17:46:53 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 17:50:48 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 18:01:02 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	sort_token_lst(t_token **head)
 	while (current)
 	{
 		next = current->next;
-		while(next)
+		while (next)
 		{
 			if (ft_strcmp(current->value, next->value) > 0)
 			{

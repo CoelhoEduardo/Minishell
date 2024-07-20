@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 17:12:25 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 17:18:22 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 17:59:08 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ int	execute_redirect(t_tree_node *left, t_tree_node *right, int redir_type)
 	before_expansion = right->cmd->value;
 	expand_tokens(right);
 	if ((*before_expansion != '\0' && !right->cmd) || right->cmd->next)
-		return (!!ft_fprintf(STDERR_FILENO, "%s: ambiguous redirect\n", 
+		return (!!ft_fprintf(STDERR_FILENO, "%s: ambiguous redirect\n",
 				before_expansion));
 	if (open_redir_file(right, redir_type, &fd) != SUCCESS)
+		return (FAILURE);
+	if (dup2_redir_file(redir_type, &fd) != SUCCESS)
 		return (FAILURE);
 	if (left->cmd)
 		exit_status = executor(left);

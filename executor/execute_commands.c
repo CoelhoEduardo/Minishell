@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 16:56:59 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 17:06:04 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 17:58:38 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	execute_command(t_tree_node *cmd_node)
 		pid = fork();
 		if (pid == -1)
 			exit(handle_error("fork"));
-		setup_fork_signal_hanlders(pid);
+		setup_fork_signal_handlers(pid);
 		if (pid == 0)
 			run_command_in_child_process(cmd_node->cmd);
 		wait_child_status(pid, &exit_status);
@@ -60,9 +60,9 @@ char	*get_cmd_path(t_token *cmd)
 
 	if (ft_strcmp(cmd->value, ".") == 0)
 		exit(!!write(STDERR_FILENO, ".: filename argument required\n", 30));
-	else if(*(cmd->value) == '\0')
+	else if (*(cmd->value) == '\0')
 		cmd_path = cmd->value;
-	else if(ft_strchr(cmd->value, '/'))
+	else if (ft_strchr(cmd->value, '/'))
 	{
 		cmd_path = cmd->value;
 		cmd->value = ft_strrchr(cmd->value, '/') + 1;
@@ -85,7 +85,7 @@ char	*search_in_path(t_token *cmd)
 	paths = ft_split(path_env, ':');
 	if (!paths)
 		exit(!!write(STDERR_FILENO, "minishell: failed to retrieve PATH\
-directories\n", 47));
+ directories\n", 47));
 	i = 0;
 	while (paths[i])
 	{
@@ -107,7 +107,7 @@ char	**get_cmd_and_args(t_token *cmd)
 	char	**cmd_and_args;
 	int		i;
 
-	cmd_and_args = ft_dalloc(sizeof(char *), token_lst_get_size(cmd) + 1);
+	cmd_and_args = ft_dalloc(sizeof(char *), (token_lst_get_size(cmd) + 1));
 	if (!cmd_and_args)
 		handle_error("failed to allocate memory");
 	i = 0;

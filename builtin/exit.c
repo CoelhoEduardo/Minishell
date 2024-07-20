@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 16:35:40 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 16:41:41 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 17:55:59 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	check_limits(char *arg, char sign)
 		return (FAILURE);
 	if (ft_strlen(arg) == 19
 		&& ((ft_strcmp(arg, "9223372036854775807") > 0 && sign == '+')
-		|| (ft_strcmp(arg, "9223372036854775808") > 0 && sign == '-')))
-			return (FAILURE);
+			|| (ft_strcmp(arg, "9223372036854775808") > 0 && sign == '-')))
+		return (FAILURE);
 	return (SUCCESS);
 }

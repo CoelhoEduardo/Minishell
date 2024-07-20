@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 17:44:45 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 17:46:40 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 18:00:47 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	set_exit_status(int status)
 
 	exit_status = get_exit_status();
 	*exit_status = status;
-	return (*exit_status);	
+	return (*exit_status);
 }
 
 void	close_pipe(int *pipe_fd)

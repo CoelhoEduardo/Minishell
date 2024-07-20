@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 16:33:49 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 16:35:17 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 17:55:44 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	execute_env(t_token *cmd)
 
 	env = *get_my_env();
 	if (cmd->next)
-		return (!!write(STDERR_FILENO, "env: too many arguments\n", 23));
+		return (!!write(STDERR_FILENO, "env: too many arguments", 23));
 	i = -1;
 	while (env[++i])
 	{

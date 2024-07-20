@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 17:40:15 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 17:44:28 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 18:00:16 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	syntax_error(char *token)
 {
-	ft_fprintf(2, "minishell: syntax error near unexpected token `%s'\n", 
+	ft_fprintf(2, "minishell: syntax error near unexpected token `%s'\n",
 		token);
 	return (set_exit_status(SYNTAX_ERROR));
 }
@@ -25,18 +25,18 @@ int	throw_error(char *cmd_path)
 		cmd_path = " ";
 	if (access(cmd_path, X_OK) == -1 && !access(cmd_path, F_OK))
 	{
-		ft_frpintf(STDERR_FILENO, "%s: Permission denied\n", cmd_path);
+		ft_fprintf(STDERR_FILENO, "%s: Permission denied\n", cmd_path);
 		return (126);
 	}
 	else if ((*cmd_path == '.' || ft_strchr(cmd_path, '/')) && !access(cmd_path,
-		F_OK))
+			F_OK))
 	{
 		ft_fprintf(STDERR_FILENO, "%s: Is a directory\n", cmd_path);
 		return (126);
 	}
 	else if (errno == 2 || !getenv("PATH"))
 	{
-		ft_fprintf("STDERR_FILENO, %s: No such file or directory\n", cmd_path);
+		ft_fprintf(STDERR_FILENO, "%s: No such file or directory\n", cmd_path);
 		return (127);
 	}
 	else
