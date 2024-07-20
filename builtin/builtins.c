@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 16:12:31 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/20 16:19:18 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/07/20 16:31:00 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	execute_builtin(t_token *cmd)
 	if (!ft_strcmp(cmd->value, "export"))
 		return (execute_export(cmd));
 	if (!ft_strcmp(cmd->value, "pwd"))
-		return (execute_pwd(cmd));
+		return (execute_pwd());
 	if (!ft_strcmp(cmd->value, "unset"))
 		return (execute_unset(cmd));
 	return (handle_error("error executing builtin"));
