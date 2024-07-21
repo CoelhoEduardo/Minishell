@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 20:45:48 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/07/19 21:10:47 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:15:05 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,30 @@ enum					e_token_type
 	END,
 	WORD,
 };
+
+t_tree_node	*build_execution_tree(t_token *token_list);
+void		split_tokens_into_tree(t_tree_node *tree_node,
+				t_token *token_list);
+void		split_list(t_tree_node *tree_node, t_token *token_list,
+				t_token *token_to_cut);
+t_token		*cut_token_list(t_token *token_list,
+				t_token *token_to_cut);
+void		split_redirect(t_tree_node *tree_node,
+				t_token *token_list, t_token *token_to_cut);
+
+/*********** bin_tree_helper.c ************/
+
+t_token		*search_and_or(t_token *token_list);
+t_token		*search_pipe(t_token *token_list);
+t_token		*search_redirect(t_token *token_list);
+t_tree_node	*get_redir_filename(t_token *redir);
+
+/* PARSER */
+int			parser(t_token *list, t_tree_node **root);
+int			check_syntax(t_token *current);
+int			check_control_operator_rule(t_token *token);
+int			check_redirect_rule(t_token *token);
+int			check_parenthesis_rule(t_token *token);
 
 /* HEREDOC */
 int						create_heredoc_file(t_token *token);
