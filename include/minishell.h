@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 20:45:48 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/07/21 13:15:05 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:42:10 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,29 +61,61 @@ enum					e_token_type
 	WORD,
 };
 
-t_tree_node	*build_execution_tree(t_token *token_list);
-void		split_tokens_into_tree(t_tree_node *tree_node,
-				t_token *token_list);
-void		split_list(t_tree_node *tree_node, t_token *token_list,
-				t_token *token_to_cut);
-t_token		*cut_token_list(t_token *token_list,
-				t_token *token_to_cut);
-void		split_redirect(t_tree_node *tree_node,
-				t_token *token_list, t_token *token_to_cut);
+/* EXPANSION */
 
-/*********** bin_tree_helper.c ************/
+void					expand_tokens(t_tree_node *cmd_node);
+char					*expand_vars(char *str);
+char					*handle_dollar(char *start, char **str);
+char					*handle_special_cases(char *dollar, char **str,
+							char **after_var, char **expanded_var);
 
-t_token		*search_and_or(t_token *token_list);
-t_token		*search_pipe(t_token *token_list);
-t_token		*search_redirect(t_token *token_list);
-t_tree_node	*get_redir_filename(t_token *redir);
+char					*remove_quotes(char *str);
+void					retokenize(t_token **token);
+void					handle_empty_value(t_token **current,
+							t_tree_node **cmd_node);
+
+void					expand_wildcards(t_token **token, t_tree_node **node);
+bool					is_match(char *text, char *pattern);
+bool					**init_lookup_table(char *text, int *text_length,
+							char *pattern, int *pattern_length);
+bool					match_result_and_free(bool **lookup, int text_length,
+							int pattern_length);
+void					update_token_list(t_token **token, t_token *matched);
+
+/*LEXER*/
+
+int						lexer(char *str, t_token **list);
+int						get_token_type(char *str);
+int						get_token_length(char *str, int type);
+int						get_word_length(char *str);
+
+int						check_open_syntax(char *str);
+void					move_to_next_quote(char *str, int *index,
+							int *single_quote, int *double_quote);
+
+/* BIN_TREE */
+
+t_tree_node				*build_execution_tree(t_token *token_list);
+void					split_tokens_into_tree(t_tree_node *tree_node,
+							t_token *token_list);
+void					split_list(t_tree_node *tree_node, t_token *token_list,
+							t_token *token_to_cut);
+t_token					*cut_token_list(t_token *token_list,
+							t_token *token_to_cut);
+void					split_redirect(t_tree_node *tree_node,
+							t_token *token_list, t_token *token_to_cut);
+
+t_token					*search_and_or(t_token *token_list);
+t_token					*search_pipe(t_token *token_list);
+t_token					*search_redirect(t_token *token_list);
+t_tree_node				*get_redir_filename(t_token *redir);
 
 /* PARSER */
-int			parser(t_token *list, t_tree_node **root);
-int			check_syntax(t_token *current);
-int			check_control_operator_rule(t_token *token);
-int			check_redirect_rule(t_token *token);
-int			check_parenthesis_rule(t_token *token);
+int						parser(t_token *list, t_tree_node **root);
+int						check_syntax(t_token *current);
+int						check_control_operator_rule(t_token *token);
+int						check_redirect_rule(t_token *token);
+int						check_parenthesis_rule(t_token *token);
 
 /* HEREDOC */
 int						create_heredoc_file(t_token *token);
