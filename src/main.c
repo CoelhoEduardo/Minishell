@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 20:10:50 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/07/18 20:47:11 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:17:08 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ void	reset_for_next_iteration(char *line)
 {
 	termios_properties();
 	free(line);
-	(void)line;
 	delete_heredoc_file();
 	ft_free_memory();
 }
 
-char	*init_and_await_input(t_token **list)
+char	*init_and_wait_input(t_token **list)
 {
 	char	*line;
 
@@ -63,18 +62,18 @@ void	termios_properties(void)
 
 int	main(void)
 {
-	char *line;
-	t_token *list;
-	t_tree_node *root;
+	char		*line;
+	t_token		*list;
+	t_tree_node	*root;
 
 	init_environ();
-	term_properties();
+	termios_properties();
 	while (42)
 	{
 		line = init_and_wait_input(&list);
 		if (!line)
 			break ;
-		else if (*line != '\0')
+		else if (*line != '\0') // line[0] != '\0'
 		{
 			add_history(line);
 			if (lexer(line, &list) == SUCCESS)

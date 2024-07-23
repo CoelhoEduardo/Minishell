@@ -20,6 +20,9 @@
 		"memory_tree.h": "c",
 		"types.h": "c",
 		"linked_list.h": "c",
-		"minishell.h": "c"
+		"minishell.h": "c",
+		"signal.h": "c",
+		"stdbool.h": "c",
+		"wait.h": "c"
 	}
 }
