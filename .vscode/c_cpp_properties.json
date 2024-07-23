@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "linux",
+            "includePath": [
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/include"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/include"
+                ]
+            }
+        }
+    ],
+    "version": 4
+}
