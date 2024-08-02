@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bin_tree_helper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:15:08 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/07/21 13:34:42 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/07/26 20:29:36 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ t_token	*search_pipe(t_token *token_list)
 	}
 	return (NULL);
 }
+
+
 
 t_token	*search_redirect(t_token *token_list)
 {

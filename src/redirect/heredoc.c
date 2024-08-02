@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 20:10:50 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/07/19 21:05:32 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/07/23 21:00:48 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	write_input_to_heredoc(int fd, char *end_condition, int is_expandable)
 	if (!line)
 	{
 		if (*get_exit_status() != SIGINT + 128)
-			ft_printf(STDERR_FILENO,
+			ft_fprintf(STDERR_FILENO,
 				"minishell: warning: here-document delimited by end-of-file (wanted '%s) \n",
 				end_condition);
 		return (SUCCESS);

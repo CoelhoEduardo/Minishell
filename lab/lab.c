@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:45:42 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/22 21:50:33 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/07/23 21:22:15 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(void)
     while (42)
     {
 		line = readline("minishell> ");
+        add_history(line);
         if (!line)
         {
             printf("Cai no break");

@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 17:27:19 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/22 21:42:47 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:46:16 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	setup_signal_handler(void (*func)(int signum))
 	sigint_action.sa_handler = func;
 	ft_bzero(&sigquit_action, sizeof(struct sigaction));
 	sigquit_action.sa_handler = SIG_IGN;
-	if (sigaction(SIGINT, &sigint_action, NULL) == -1
-		|| sigaction(SIGQUIT, &sigquit_action, NULL) == -1)
+	if (sigaction(SIGINT, &sigint_action, NULL) == -1 || sigaction(SIGQUIT,
+			&sigquit_action, NULL) == -1)
 		return (handle_error("sigaction"));
 	return (SUCCESS);
 }
@@ -64,8 +64,8 @@ int	setup_fork_signal_handlers(int pid)
 		action.sa_handler = SIG_IGN;
 	sigaction(SIGQUIT, &action, NULL);
 	sigaction(SIGINT, &action, NULL);
-	if (sigaction(SIGINT, &action, NULL) == -1
-		|| sigaction(SIGQUIT, &action, NULL) == -1)
+	if (sigaction(SIGINT, &action, NULL) == -1 || sigaction(SIGQUIT, &action,
+			NULL) == -1)
 		return (handle_error("sigaction"));
 	return (SUCCESS);
 }

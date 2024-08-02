@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 12:52:54 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/07/21 13:34:57 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/07/23 20:31:41 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,20 @@ int	check_parenthesis_rule(t_token *token)
 {
 	if (token->type == OPEN_PAREN)
 	{
+		/* O TOKEN ANTERIOR NAO PODE SER NADA ALEM DE AND, OR, PIPE, OPEN_PAREN */
 		if (token->prev != NULL && token->prev->type > OPEN_PAREN)
 			return (syntax_error(token->value));
+		/* O PROXIMO TOKEN NAO PODE SER NULL OU PIPE, AND OU OR */
 		if (token->next == NULL || token->next->type <= PIPE)
 			return (syntax_error(token->value));
 	}
 	else if (token->type == CLOSE_PAREN)
 	{
+		/* O TOKEN ANTERIOR NAO PODE SER NULL E NEM NADA ALEM DE WORD OU CLOSE_PAREN */
 		if (token->prev == NULL || (token->prev->type != WORD
 				&& token->prev->type != CLOSE_PAREN))
 			return (syntax_error(token->value));
+		/* SE O PROXIMO TOKEN EXISTIR ELE NAO PODE SER UMA WORD */
 		if (token->next != NULL && (token->next->type == WORD))
 			return (syntax_error(token->value));
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bin_tree.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:15:22 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/07/21 13:34:09 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/07/26 20:51:53 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	split_list(t_tree_node *tree_node, t_token *token_list,
 	if (!tree_node || !token_list || !token_to_cut)
 		return ;
 	tree_node->cmd = token_to_cut;
-	right = cut_token_list(token_list, token_to_cut);
+	right = cut_token_list(token_to_cut);
 	if (!right)
 	{
 		perror("failed to build execution tree");
@@ -63,11 +63,11 @@ void	split_list(t_tree_node *tree_node, t_token *token_list,
 	tree_node->right = build_execution_tree(right);
 }
 
-t_token	*cut_token_list(t_token *token_list, t_token *token_to_cut)
+t_token	*cut_token_list(t_token *token_to_cut)
 {
 	t_token	*right;
 
-	if (!token_list || !token_to_cut)
+	if (!token_to_cut)
 		return (NULL);
 	right = token_to_cut->next;
 	right->prev = NULL;

@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 17:06:38 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/22 22:01:07 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:57:42 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	wait_child_status(pid_t pid, int *status)
 	waitpid(pid, status, 0);
 	if (WIFEXITED(*status))
 		*status = WEXITSTATUS(*status);
+	// Check for a specific exit status
 	else if (*status == 1)
 		return ;
 	else if (WIFSIGNALED(*status))
@@ -61,3 +62,6 @@ void	wait_child_status(pid_t pid, int *status)
 		*status = WTERMSIG(*status) + 128;
 	}
 }
+
+// low-order 8 bits of the exit status value
+
