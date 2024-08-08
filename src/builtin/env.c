@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 16:33:49 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/07/22 21:58:31 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/08/07 21:16:07 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ int	execute_env(t_token *cmd)
 
 	env = *get_my_env();
 	if (cmd->next)
-		return (!!write(STDERR_FILENO, "env: too many arguments", 23));
-	i = -1;
-	while (env[++i])
+		return (!!write(STDERR_FILENO, "env: too many arguments\n", 24));
+	i = 0;
+	while (env[i])
 	{
-		if (env[i][0] && ft_strchr(env[i], '='))
-			ft_fprintf(STDOUT_FILENO, "%s\n", env[i]);
+		ft_putstr_fd(env[i], STDOUT_FILENO);
+		ft_putstr_fd("\n", STDOUT_FILENO);
+		i++;
 	}
 	return (SUCCESS);
 }
